@@ -53,7 +53,7 @@ export const register = (req, res) => {
               ];
         
             db.query(q3, [values3], (err,data)=>{
-                if(err) return res.staus(500).json(err)
+                if(err) return res.status(500).json(err)
             });
 
         }

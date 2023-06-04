@@ -11,6 +11,7 @@ import relationshipRoutes from "./routes/relationships.js";
 import cors from "cors";
 import cookieParser from "cookie-parser";
 import multer from "multer";
+import path from "path";
 
 //middlewares
 app.use((req,res,next)=>{
@@ -19,7 +20,7 @@ app.use((req,res,next)=>{
 })
 app.use(express.json())
 app.use(cors({
-    origin:"https://opendreamdesigns.com"
+    origin:"http://localhost:3000"
 }))
 app.use(cookieParser())
 
@@ -58,5 +59,5 @@ app.use(express.static('build'));
 
 // For any route that is not recognized by the API, serve the React front-end
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'build', 'index.html'));
+  res.status(404).json("Page does not exist!");
 });

@@ -8,7 +8,7 @@ export const getComments = (req,res)=>{
     `;
 
     db.query(q, [req.query.postId], (err,data)=>{
-        if(err) return res.staus(500).json(err)
+        if(err) return res.status(500).json(err)
         return res.status(200).json(data);
     });
 };
@@ -30,7 +30,7 @@ export const addComment = (req,res) => {
           ];
     
         db.query(q, [values], (err,data)=>{
-            if(err) return res.staus(500).json(err)
+            if(err) return res.status(500).json(err)
             return res.status(200).json("Comment has been created.");
         });
     });

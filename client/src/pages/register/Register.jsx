@@ -12,8 +12,8 @@ const Register = ({addActivity}) => {
     email: "",
     password: "",
     name: "",
-    profilePic: "",
-    coverPic: "",
+    profilePic: "12.jpg",
+    coverPic: "12.jpg",
     city: 'USA',
     website: 'joeyiscool.com',
     ids: []
@@ -32,15 +32,17 @@ const Register = ({addActivity}) => {
     e.preventDefault();
     if (inputs.username !== "" && inputs.name !== "" && inputs.email !== "" && inputs.password !== "") {
       try {
-        await axios.post("https://opendreamdesigns.com/api/auth/register", inputs);
+        await axios.post("http://localhost:8800/api/auth/register", inputs);
         try {
           await login(inputs);
           addActivity({label: "Successfully registered", moment: moment(), link: "/activity"})
           navigate("/")
         } catch (err) {
+          console.error(err)
           setErr(err.response.data);
         }
       } catch (err) {
+        console.error(err)
         setErr(err.response.data);
       }
     } else {

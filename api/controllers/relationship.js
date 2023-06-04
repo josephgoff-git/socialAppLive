@@ -14,7 +14,7 @@ export const getAllRelationships = (req,res) => {
     const q = "SELECT * FROM relationships";
 
     db.query(q, [], (err,data)=>{
-        if(err) return res.staus(500).json(err)
+        if(err) return res.status(500).json(err)
         return res.status(200).json(data);
     });
 };
@@ -51,7 +51,7 @@ export const deleteRelationship = (req,res) => {
         const q = "DELETE FROM relationships WHERE `followerUserId` = ? AND `followedUserId` = ?";
 
         db.query(q, [userInfo.id, req.query.userId], (err,data)=>{
-            if(err) return res.staus(500).json(err)
+            if(err) return res.status(500).json(err)
             return res.status(200).json("No longer following");
         });
     });
